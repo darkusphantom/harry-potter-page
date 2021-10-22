@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+	--white: #fff;
+	--black: #000;
+
+	--backgroundImgHeader: url('./assets/carousel1.png') no-repeat center;
+
+	--colorTitle: var(--white);
+	--colorNavbarText: var(--white);
+}
+
+body {
+	font-family: 'Fondamento', cursive;
+}
