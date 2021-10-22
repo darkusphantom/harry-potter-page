@@ -1,13 +1,47 @@
 :root {
 	--white: #fff;
 	--black: #000;
+	--yellow: #efba30;
+	--yellowDark: #d3a625;
+	--red: #ae0001;
+	--redDark: #740001;
 
-	--backgroundImgHeader: url('./assets/carousel1.png') no-repeat center;
+	--gradientRed: linear-gradient(180deg, var(--redDark), var(--red));
+	--gradientYellow: linear-gradient(45deg, var(--yellowDark), var(--yellow));
+
+	--backgroundImgHeader-desktop: url('https://i.imgur.com/x3ugTiX.jpg') no-repeat center;
+	--backgroundImgHeader-mobile: url('https://i.imgur.com/cXch0Tt.jpg') no-repeat center;
+	--backgroundBody: var(--black);
+	--backgroundTableHead: var(--gradientRed);
+	--backgroundTableBody: var(--gradientYellow);
 
 	--colorTitle: var(--white);
 	--colorNavbarText: var(--white);
+	--colorText: var(--white);
 }
 
 body {
 	font-family: 'Fondamento', cursive;
+}
+
+table {
+	border-radius: 5px;
+}
+
+table thead tr {
+	background: var(--backgroundTableHead);
+	text-transform: uppercase;
+}
+
+table tbody tr:nth-child(odd) {
+	background: var(--backgroundTableBody);
+}
+
+table tbody tr:nth-child(even) {
+	background: var(--red);
+}
+
+table tbody td {
+	color: var(--white)!important;
+	text-transform: capitalize;
 }

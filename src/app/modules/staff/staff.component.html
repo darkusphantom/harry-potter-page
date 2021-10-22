@@ -1,53 +1,68 @@
-<h2>Staff list</h2>
-<hr>
-<div class="row">
-  <div class="col">
-    <div class="form-group">
-      <input type="text"
-        class="form-control"
-        placeholder="Search by house..."
-        #txtSearch
-        (keyup)="onSearchStaffs(txtSearch.value)"
-      >
+<section class="staff container">
+  <h2 class="staff__title text-center">Staff list</h2>
+  <div class="staff__search row">
+    <div class="col">
+      <div class="form-group d-flex justify-content-center">
+        <input type="text"
+          class="form-control"
+          placeholder="Search by house..."
+          #txtSearch
+          (keyup)="onSearchStaffs(txtSearch.value)"
+        >
+      </div>
     </div>
   </div>
-</div>
+  <div class="staff__table row">
+    <div class="col">
+      <table class="table table-striped">
+        <thead class="text-white">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Species</th>
+            <th scope="col">Gender</th>
+            <th scope="col">House</th>
+            <th scope="col">Image</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let staff of staffs | filterStaffs:page:filterStaffs;
+              index as i;
+            "
+            [ngStyle]="{'height': '50px'}"
+          >
+            <td>{{ i+1 }}</td>
+            <td>{{ staff.name }}</td>
+            <td>{{ staff.species }}</td>
+            <td>{{ staff.gender }}</td>
+            <td>{{ staff.house }}</td>
+            <td *ngIf="staff.image, else image">
+              <img [src]="staff.image" [alt]="staff.name" width="90">
+            </td>
+            <ng-template #image>
+              <td>Not found image</td>
+            </ng-template>
 
-<br>
-<button class="btn btn-primary" (click)="prevPage()">
-  Anteriores
-</button>
-&nbsp;
-<button class="btn btn-primary" (click)="nextPage()" [disabled]="(staffs | filterStaffs:page:filterStaffs).length === 0">
-  Siguientes
-</button>
-<br><br><br>
-
-<div class="row">
-  <div class="col">
-    <table class="table table-striped">
-      <thead class="bg-success bg-gradient text-white">
-        <tr>
-          <th scope="col">Image</th>
-          <th scope="col">Name</th>
-          <th scope="col">Species</th>
-          <th scope="col">Gender</th>
-          <th scope="col">House</th>
-        </tr>
-      </thead>
-      <tbody *ngFor="let staff of staffs | filterStaffs:page:filterStaffs" [ngStyle]="{'height': '50px'}">
-        <tr class="bg-success text-dark bg-opacity-25">
-          <td *ngIf="staff.image, else image"><img [src]="staff.image" [alt]="staff.name" width="90"></td>
-
-          <ng-template #image>
-            <td>Not found image</td>
-          </ng-template>
-          <td>{{ staff.name }}</td>
-          <td>{{ staff.species }}</td>
-          <td>{{ staff.gender }}</td>
-          <td>{{ staff.house }}</td>
-        </tr>
-      </tbody>
-    </table>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
+
+  <div class="container container__btn d-flex justify-content-around">
+    <button
+      class="btn btn-secundary text-white"
+      (click)="prevPage()">
+        Anteriores
+    </button>
+    &nbsp;
+    <button
+      class="btn btn-primary"
+      (click)="nextPage()" [disabled]="(staffs | filterStaffs:page:filterStaffs).length === 0"
+    >
+      Siguientes
+    </button>
+  </div>
+</section>

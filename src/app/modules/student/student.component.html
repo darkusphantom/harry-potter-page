@@ -1,54 +1,69 @@
-<h2>Students list</h2>
-
-<hr>
-<div class="row">
-  <div class="col">
-    <div class="form-group">
-      <input type="text"
-        class="form-control"
-        placeholder="Search by house..."
-        #txtSearch
-        (keyup)="onSearchStudents(txtSearch.value)"
-      >
+<section class="students container">
+  <h2 class="students__title text-center">Students list</h2>
+  <div class="students__search row">
+    <div class="col">
+      <div class="form-group d-flex justify-content-center">
+        <input type="text"
+          class="form-control"
+          placeholder="Search by house..."
+          #txtSearch
+          (keyup)="onSearchStudents(txtSearch.value)"
+        >
+      </div>
     </div>
   </div>
-</div>
 
-<br>
-<button class="btn btn-primary" (click)="prevPage()">
-  Anteriores
-</button>
-&nbsp;
-<button class="btn btn-primary" (click)="nextPage()" [disabled]="(students | filterStudents:page:filterStudents).length === 0">
-  Siguientes
-</button>
-<br><br><br>
-
-<div class="row">
-  <div class="col">
-    <table class="table table-striped">
-      <thead class="bg-success bg-gradient text-white">
-        <tr>
-          <th scope="col">Image</th>
-          <th scope="col">Name</th>
-          <th scope="col">Species</th>
-          <th scope="col">Gender</th>
-          <th scope="col">House</th>
-        </tr>
-      </thead>
-      <tbody *ngFor="let student of students | filterStudents:page:filterStudents" [ngStyle]="{'height': '50px'}">
-        <tr class="bg-success text-dark bg-opacity-25">
-          <td *ngIf="student.image, else image"><img [src]="student.image" [alt]="student.name" width="90"></td>
-
-          <ng-template #image>
-            <td>Not found image</td>
-          </ng-template>
-          <td>{{ student.name }}</td>
-          <td>{{ student.species }}</td>
-          <td>{{ student.gender }}</td>
-          <td>{{ student.house }}</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="students__table row">
+    <div class="col">
+      <table class="table table-striped">
+        <thead class="bg-success bg-gradient text-white">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Species</th>
+            <th scope="col">Gender</th>
+            <th scope="col">House</th>
+            <th scope="col">Image</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let student of students | filterStudents:page:filterStudents;
+              index as i;
+            "
+            [ngStyle]="{'height': '50px'}"
+          >
+            <td>{{ i+1 }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.species }}</td>
+            <td>{{ student.gender }}</td>
+            <td>{{ student.house }}</td>
+            <td *ngIf="student.image, else image">
+              <img [src]="student.image" [alt]="student.name" width="90">
+            </td>
+            <ng-template #image>
+              <td>Not found image</td>
+            </ng-template>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
+  <div class="container container__btn d-flex justify-content-around">
+    <button
+      class="btn btn-secundary text-white"
+      (click)="prevPage()"
+    >
+      Preview
+    </button>
+    &nbsp;
+    <button
+      class="btn btn-primary"
+      (click)="nextPage()"
+      [disabled]="(students | filterStudents:page:filterStudents).length === 0"
+    >
+      Next
+    </button>
+  </div>
+</section>

@@ -1,9 +1,55 @@
 .description__page{
   width: 100%;
-  padding: 10px 20px;
-  margin-bottom: 20px;
+  height: 60vh;
 }
 
 .description__page__title{
-  text-align: center;
+  animation: moveRight 1.3s .5s ease;
+  will-change: transform;
+}
+
+.description__page p {
+  width: 50%;
+  margin: 10px auto;
+  animation: moveLeft 1.3s .5s ease;
+  will-change: transform;
+}
+
+.description__page img {
+  filter: invert(1);
+  animation: showUp 2s .5s ease;
+  will-change: opacity;
+}
+
+@media screen and (max-width: 768px) {
+  .description__page {
+    height: 100vh;
+  }
+}
+
+@keyframes moveRight {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveLeft {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes showUp {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

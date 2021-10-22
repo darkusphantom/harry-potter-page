@@ -1,6 +1,6 @@
 .header__page {
   height: 50vh;
-  background: var(--backgroundImgHeader);
+  background: var(--backgroundImgHeader-desktop);
   background-size: 100%;
   position: relative;
 }
@@ -11,6 +11,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: var(--colorTitle);
+  letter-spacing: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 1.5;
 }
 
 .header__page .navbar ul {
@@ -18,8 +22,18 @@
   margin-right: 20px;
 }
 
+.header__page .navbar ul li:hover {
+  background: var(--yellow);
+  border-radius: 20px;
+  transition: background 1s ease;
+}
+
 .header__page .navbar ul li a {
   color: var(--colorNavbarText);
+}
+
+.header__page .navbar button span{
+  filter: invert(1);
 }
 
 .intro {
@@ -40,4 +54,14 @@
 .intro__title {
   width: 40%;
   margin-bottom: 2em;
+}
+
+@media screen and (max-width: 760px) {
+  .header__page {
+    background: var(--backgroundImgHeader-mobile);
+  }
+  .header__page .navbar ul li a {
+    margin-left: 10px;
+  }
+
 }

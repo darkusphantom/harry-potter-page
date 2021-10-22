@@ -1,0 +1,36 @@
+.students {
+	padding: 30px 0;
+}
+.students__title {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.students__search {
+	margin: 0 auto 20px auto;
+}
+
+.students__search input {
+	background: none!important;
+	border: none!important;
+	border-bottom: 3px solid var(--yellow)!important;
+	width: 30%;
+	transition: width .8s ease;
+	will-change: width;
+}
+
+.students__search input:focus {
+	width: 50%;
+	transition: width .8s ease;
+	will-change: width;
+}
+
+@media screen and (max-width: 425px) {
+	.students__search input {
+		width: 50%;
+	}
+
+	.students__search input:focus {
+		width: 100%;
+	}
+}

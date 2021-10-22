@@ -1,0 +1,37 @@
+.staff {
+	padding: 30px 0;
+}
+.staff__title {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.staff__search {
+	width: 50%;
+	margin: 0 auto 20px auto;
+}
+
+.staff__search input {
+	background: none!important;
+	border: none!important;
+	border-bottom: 3px solid var(--yellow)!important;
+	width: 50%;
+	transition: width .8s ease;
+	will-change: width;
+}
+
+.staff__search input:focus {
+	width: 70%;
+	transition: width .8s ease;
+	will-change: width;
+}
+
+@media screen and (max-width: 425px) {
+	.staff__search input {
+		width: 50%;
+	}
+
+	.staff__search input:focus {
+		width: 100%;
+	}
+}
