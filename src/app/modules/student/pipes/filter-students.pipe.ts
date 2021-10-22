@@ -1,12 +1,10 @@
-// Mmodulos de Angular
 import { Pipe, PipeTransform } from '@angular/core';
-
-// Interfaces
 import { Student } from 'src/app/interfaces/students.interface';
 
 @Pipe({
   name: 'filterStudents'
 })
+
 export class FilterStudentsPipe implements PipeTransform {
 
   transform(students: Student[], page: number = 0, search :string = ''): Student[] {

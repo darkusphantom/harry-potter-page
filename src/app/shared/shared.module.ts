@@ -1,8 +1,6 @@
-// Modulos de Angular
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-// Componentes
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 
